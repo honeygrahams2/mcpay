@@ -1,0 +1,18 @@
+[package]
+name = "mcpay"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+borsh = "1.4.0"
+mpl-bubblegum = "1.2.0"
+solana-program = "1.17.28"
+spl-account-compression = {version = "0.3.0", features = ["no-entrypoint"]}
+spl-associated-token-account = {version = "3.0.2", features = ["no-entrypoint"]}
+spl-token = "4.0.1"
+thiserror = "1.0.58"
+
+[lib]
+crate-type = ["cdylib", "lib"]
