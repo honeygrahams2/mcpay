@@ -1,7 +1,7 @@
-// use borsh::{
-//     BorshDeserialize, 
-//     BorshSerialize,
-// };
+use borsh::{
+    BorshDeserialize, 
+    BorshSerialize,
+};
 use solana_program::{
     account_info::{
         AccountInfo,
@@ -13,7 +13,7 @@ use solana_program::{
 };
 
 use crate::{
-    // error::McPayError, 
+    error::McPayError, 
     instruction::McPayInstruction, 
     state::ClockInData,
 };
@@ -30,7 +30,7 @@ pub fn assert_true(cond: bool, err: ProgramError, msg: &str) -> ProgramResult {
 pub struct Processor {}
 impl Processor {
     pub fn process_instruction(
-        _program_id: &Pubkey,
+        program_id: &Pubkey,
         accounts: &[AccountInfo],
         instruction_data: &[u8],
     ) -> ProgramResult {
@@ -41,7 +41,7 @@ impl Processor {
             } => {
                 msg!("Clock In");
                 Self::process_clocking_in(
-                    // program_id,
+                    program_id,
                     accounts,
                     clock_in_data,
                 )
@@ -52,7 +52,7 @@ impl Processor {
     }
 
     fn process_clocking_in(
-        // program_id: &Pubkey,
+        program_id: &Pubkey,
         accounts: &[AccountInfo],
         clock_in_data: ClockInData,
     ) -> ProgramResult {
