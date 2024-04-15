@@ -17,4 +17,5 @@ pub struct ClockInData {
     pub data_hash: Pubkey,
     pub creator_hash: Pubkey,
     pub nonce: u64,
+    pub proof_length: u8,
 }
