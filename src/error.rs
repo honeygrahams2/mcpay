@@ -11,16 +11,20 @@ pub enum McPayError {
     InvalidProgramStatePDA,
     #[error("CERROR: Invalid Wallet State PDA")]
     InvalidWalletStatePDA,
-    #[error("CERROR: Invalid Receipt State PDA")]
-    InvalidReceiptStatePDA,
     #[error("CERROR: Program State Not Initialized")]
     ProgramStateNotInitialized,
-    #[error("CERROR: Invalid Mint Authority")]
-    InvalidMintAuthority,
     #[error("CERROR: Invalid Merkle Tree")]
     InvalidMerkleTree,
     #[error("CERROR: Invalid Tree Authority")]
     InvalidTreeAuthority,
+    #[error("CERROR: Invalid Asset State PDA")]
+    InvalidAssetStatePDA,
+    #[error("CERROR: Asset Already Clocked In")]
+    AlreadyClockedIn,
+    #[error("CERROR: Invalid Level")]
+    InvalidLevel,
+    #[error("CERROR: Clock In Disabled")]
+    ClockInDisabled,
     #[error("CERROR: Invalid SPL Token Program ID")]
     InvalidSPLTokenID,
     #[error("CERROR: Invalid Treasury")]
