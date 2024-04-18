@@ -19,9 +19,10 @@ pub struct ProgramState {  // 1 + 1 + 1 + 32 + 8 + 8 + 8 + 32 + 32 + 1 + 32 + 32
 }
 
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
-pub struct AssetState {  // 1 + 32 + 8 + 8 + 1 + 8
+pub struct AssetState {  // 1 + 32 + 32 + 8 + 8 + 1 + 8
     pub is_initialized: bool,
     pub clock_in_wallet: Pubkey,
+    pub asset_id: Pubkey,
     pub clock_in_utime: i64,
     pub clock_out_utime: i64,
     pub level: u8,
@@ -29,7 +30,7 @@ pub struct AssetState {  // 1 + 32 + 8 + 8 + 1 + 8
 }
 
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
-pub struct ClockInData {
+pub struct ClockInData {  // 32 + 32 + 32 + 8 + 1 + 1
     pub root: Pubkey,
     pub data_hash: Pubkey,
     pub creator_hash: Pubkey,
@@ -39,7 +40,7 @@ pub struct ClockInData {
 }
 
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
-pub struct ClockOutData {
+pub struct ClockOutData {  // 32 + 32 + 32 + 8 + 1
     pub root: Pubkey,
     pub data_hash: Pubkey,
     pub creator_hash: Pubkey,
@@ -48,7 +49,7 @@ pub struct ClockOutData {
 }
 
 #[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
-pub struct UpdateStateData {
+pub struct UpdateStateData {  // 1 + 1 + 32 + 8 + 8 + 8 + 32 + 32 + 32
     pub new_clock_in_is_enabled: u8,
     pub new_clock_out_is_enabled: u8,
     pub new_merkle_tree: Pubkey,
@@ -58,4 +59,15 @@ pub struct UpdateStateData {
     pub new_pickle_mint: Pubkey,
     pub new_mcdegens_treasury: Pubkey,
     pub new_mcdegens_pickle_ata: Pubkey,
+}
+
+#[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
+pub struct TransferPickleData {
+    pub treasury_type: u8,
+    pub chips: u64,
+}
+
+#[derive(BorshSerialize, BorshDeserialize, PartialEq, Debug, Clone)]
+pub struct TransferSOLData {
+    pub lamports: u64,
 }

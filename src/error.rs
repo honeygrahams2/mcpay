@@ -27,16 +27,26 @@ pub enum McPayError {
     ClockOutDisabled,
     #[error("CERROR: Invalid SPL Token Program ID")]
     InvalidSPLTokenProgramID,
-    #[error("CERROR: Invalid McPay Vault")]
-    InvalidMcPayVault,
+    #[error("CERROR: Invalid McPay Vault PDA")]
+    InvalidMcPayVaultPDA,
     #[error("CERROR: Invalid McPay Vault Pickle ATA")]
     InvalidMcPayVaultPickleATA,
     #[error("CERROR: Invalid Associated Token Account")]
     InvalidATA,
     #[error("CERROR: Invalid SPL Account Compression Program ID")]
     InvalidSPLAccountCompressionProgramID,
-    #[error("CERROR: Invalid System Program ID")]
+    #[error("CERROR: Invalid System Program ID")]    
     InvalidSystemProgramID,
+    #[error("CERROR: Invalid Clock In Wallet")]    
+    InvalidClockInWallet,
+    #[error("CERROR: Invalid McDegens Pickle ATA")]    
+    InvalidMcDegensPickleATA,
+    #[error("CERROR: Insufficient Funds in Pickle Vault")]
+    InsufficientVaultPickle,
+    #[error("CERROR: Insufficient SOL in McPay Vault")]
+    InsufficientVaultSOL,
+    #[error("CERROR: Invalid McDegens Treasury")]
+    InvalidMcDegensTreasury,
     #[error("CERROR: Too Soon")]
     TooSoon,
     #[error("CERROR: No Updates Indicated")]
