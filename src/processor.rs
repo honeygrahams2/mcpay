@@ -392,6 +392,14 @@ impl Processor {
             ProgramError::from(McPayError::InvalidATA),
             "CERROR: Invalid signer pickle ata",
         )?;
+        
+        let mcpay_vault_pickle_ata_data = Account::unpack(&mcpay_vault_pickle_ata.try_borrow_data()?)?;
+        let asset_state_data: AssetState = AssetState::try_from_slice(&asset_state_pda.data.borrow())?;
+        assert_true(                    
+            mcpay_vault_pickle_ata_data.amount >= asset_state_data.chips_due,
+            ProgramError::from(McPayError::InsufficientVaultPickle),
+            "CERROR: Insufficient funds in Pickle Vault",
+        )?;
 
         let leaf = mpl_bubblegum::types::LeafSchema::V1 { 
             id: asset_id, 
@@ -422,7 +430,6 @@ impl Processor {
         )?;
 
         if !asset_state_pda.data_is_empty() {
-            let asset_state_data: AssetState = AssetState::try_from_slice(&asset_state_pda.data.borrow())?;
             assert_true(
                 *clock_in_wallet.key == asset_state_data.clock_in_wallet,
                 ProgramError::from(McPayError::InvalidClockInWallet),
