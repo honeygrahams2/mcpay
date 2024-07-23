@@ -2,17 +2,24 @@
 name = "mcpay_0"
 version = "0.1.0"
 edition = "2021"
+build = "build.rs"
+build-sbf = "build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 borsh = "1.4.0"
+include-idl = { path = "../include-idl" }
 mpl-bubblegum = "1.2.0"
+shank = "0.3.0"
 solana-program = "1.17.31"
 spl-account-compression = {version = "0.3.0", features = ["no-entrypoint"]}
 spl-associated-token-account = {version = "3.0.2", features = ["no-entrypoint"]}
 spl-token = "4.0.1"
 thiserror = "1.0.58"
+
+[build-dependencies]
+include-idl = { path = "../include-idl" }
 
 [lib]
 crate-type = ["cdylib", "lib"]

@@ -1,0 +1,432 @@
+{
+  "version": "0.1.0",
+  "name": "mcpay_0",
+  "instructions": [],
+  "types": [
+    {
+      "name": "ProgramState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "isInitialized",
+            "type": "bool"
+          },
+          {
+            "name": "clockInIsEnabled",
+            "type": "u8"
+          },
+          {
+            "name": "clockOutIsEnabled",
+            "type": "u8"
+          },
+          {
+            "name": "merkleTree",
+            "type": "publicKey"
+          },
+          {
+            "name": "levelOneRate",
+            "type": "u64"
+          },
+          {
+            "name": "levelSevenRate",
+            "type": "u64"
+          },
+          {
+            "name": "levelThirtyRate",
+            "type": "u64"
+          },
+          {
+            "name": "pickleMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "mcpayVaultPda",
+            "type": "publicKey"
+          },
+          {
+            "name": "mcpayVaultBump",
+            "type": "u8"
+          },
+          {
+            "name": "mcpayVaultPickleAta",
+            "type": "publicKey"
+          },
+          {
+            "name": "mcdegensTreasury",
+            "type": "publicKey"
+          },
+          {
+            "name": "mcdegensPickleAta",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AssetState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "isInitialized",
+            "type": "bool"
+          },
+          {
+            "name": "clockInWallet",
+            "type": "publicKey"
+          },
+          {
+            "name": "assetId",
+            "type": "publicKey"
+          },
+          {
+            "name": "clockInUtime",
+            "type": "i64"
+          },
+          {
+            "name": "clockOutUtime",
+            "type": "i64"
+          },
+          {
+            "name": "level",
+            "type": "u8"
+          },
+          {
+            "name": "chipsDue",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ClockInData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "root",
+            "type": "publicKey"
+          },
+          {
+            "name": "dataHash",
+            "type": "publicKey"
+          },
+          {
+            "name": "creatorHash",
+            "type": "publicKey"
+          },
+          {
+            "name": "nonce",
+            "type": "u64"
+          },
+          {
+            "name": "proofLength",
+            "type": "u8"
+          },
+          {
+            "name": "level",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ClockOutData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "root",
+            "type": "publicKey"
+          },
+          {
+            "name": "dataHash",
+            "type": "publicKey"
+          },
+          {
+            "name": "creatorHash",
+            "type": "publicKey"
+          },
+          {
+            "name": "nonce",
+            "type": "u64"
+          },
+          {
+            "name": "proofLength",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "UpdateStateData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "newClockInIsEnabled",
+            "type": "u8"
+          },
+          {
+            "name": "newClockOutIsEnabled",
+            "type": "u8"
+          },
+          {
+            "name": "newMerkleTree",
+            "type": "publicKey"
+          },
+          {
+            "name": "newLevelOneRate",
+            "type": "u64"
+          },
+          {
+            "name": "newLevelSevenRate",
+            "type": "u64"
+          },
+          {
+            "name": "newLevelThirtyRate",
+            "type": "u64"
+          },
+          {
+            "name": "newPickleMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "newMcdegensTreasury",
+            "type": "publicKey"
+          },
+          {
+            "name": "newMcdegensPickleAta",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TransferPickleData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "treasuryType",
+            "type": "u8"
+          },
+          {
+            "name": "chips",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TransferSOLData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "lamports",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "McPayInstruction",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "ClockIn",
+            "fields": [
+              {
+                "name": "clock_in_data",
+                "type": {
+                  "defined": "ClockInData"
+                }
+              }
+            ]
+          },
+          {
+            "name": "ClockOut",
+            "fields": [
+              {
+                "name": "clock_out_data",
+                "type": {
+                  "defined": "ClockOutData"
+                }
+              }
+            ]
+          },
+          {
+            "name": "CloseProgramState"
+          },
+          {
+            "name": "TransferPickle",
+            "fields": [
+              {
+                "name": "transfer_pickle_data",
+                "type": {
+                  "defined": "TransferPickleData"
+                }
+              }
+            ]
+          },
+          {
+            "name": "TransferSOL",
+            "fields": [
+              {
+                "name": "transfer_sol_data",
+                "type": {
+                  "defined": "TransferSOLData"
+                }
+              }
+            ]
+          },
+          {
+            "name": "UpdateState",
+            "fields": [
+              {
+                "name": "update_state_data",
+                "type": {
+                  "defined": "UpdateStateData"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 0,
+      "name": "InvalidInstruction",
+      "msg": "CERROR: Invalid Instruction"
+    },
+    {
+      "code": 1,
+      "name": "InvalidInstructionData",
+      "msg": "CERROR: Invalid Instruction Data"
+    },
+    {
+      "code": 2,
+      "name": "InvalidProgramStatePDA",
+      "msg": "CERROR: Invalid Program State PDA"
+    },
+    {
+      "code": 3,
+      "name": "ProgramStateNotInitialized",
+      "msg": "CERROR: Program State Not Initialized"
+    },
+    {
+      "code": 4,
+      "name": "InvalidMerkleTree",
+      "msg": "CERROR: Invalid Merkle Tree"
+    },
+    {
+      "code": 5,
+      "name": "InvalidAssetStatePDA",
+      "msg": "CERROR: Invalid Asset State PDA"
+    },
+    {
+      "code": 6,
+      "name": "AlreadyClockedIn",
+      "msg": "CERROR: Asset Already Clocked In"
+    },
+    {
+      "code": 7,
+      "name": "NotClockedIn",
+      "msg": "CERROR: Asset Not Clocked In"
+    },
+    {
+      "code": 8,
+      "name": "InvalidLevel",
+      "msg": "CERROR: Invalid Level"
+    },
+    {
+      "code": 9,
+      "name": "ClockInDisabled",
+      "msg": "CERROR: Clock In Disabled"
+    },
+    {
+      "code": 10,
+      "name": "ClockOutDisabled",
+      "msg": "CERROR: Clock Out Disabled"
+    },
+    {
+      "code": 11,
+      "name": "InvalidSPLTokenProgramID",
+      "msg": "CERROR: Invalid SPL Token Program ID"
+    },
+    {
+      "code": 12,
+      "name": "InvalidMcPayVaultPDA",
+      "msg": "CERROR: Invalid McPay Vault PDA"
+    },
+    {
+      "code": 13,
+      "name": "InvalidMcPayVaultPickleATA",
+      "msg": "CERROR: Invalid McPay Vault Pickle ATA"
+    },
+    {
+      "code": 14,
+      "name": "InvalidATA",
+      "msg": "CERROR: Invalid Associated Token Account"
+    },
+    {
+      "code": 15,
+      "name": "InvalidSPLAccountCompressionProgramID",
+      "msg": "CERROR: Invalid SPL Account Compression Program ID"
+    },
+    {
+      "code": 16,
+      "name": "InvalidSystemProgramID",
+      "msg": "CERROR: Invalid System Program ID"
+    },
+    {
+      "code": 17,
+      "name": "InvalidClockInWallet",
+      "msg": "CERROR: Invalid Clock In Wallet"
+    },
+    {
+      "code": 18,
+      "name": "InvalidMcDegensPickleATA",
+      "msg": "CERROR: Invalid McDegens Pickle ATA"
+    },
+    {
+      "code": 19,
+      "name": "InsufficientVaultPickle",
+      "msg": "CERROR: Insufficient Funds in Pickle Vault"
+    },
+    {
+      "code": 20,
+      "name": "InsufficientVaultSOL",
+      "msg": "CERROR: Insufficient SOL in McPay Vault"
+    },
+    {
+      "code": 21,
+      "name": "InvalidMcDegensTreasury",
+      "msg": "CERROR: Invalid McDegens Treasury"
+    },
+    {
+      "code": 22,
+      "name": "TooSoon",
+      "msg": "CERROR: Too Soon"
+    },
+    {
+      "code": 23,
+      "name": "NoUpdatesIndicated",
+      "msg": "CERROR: No Updates Indicated"
+    },
+    {
+      "code": 24,
+      "name": "AmountOverflow",
+      "msg": "CERROR: AmountOverflow"
+    }
+  ],
+  "metadata": {
+    "origin": "shank",
+    "address": "BtFLxrtCs4BR43jpHvZ9o4t3xk9zkKXx4JTuDhFTeD8W"
+  }
+}
