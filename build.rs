@@ -1,26 +1,30 @@
+use dirs::home_dir;
 use std::{
-    env, 
+    env::{self}, 
     path::PathBuf, 
-    // process::Command,
+    process::Command,
 };
 
 use include_idl::compress_idl;
 
-fn main() {
+fn main() {   
     // Run shank to generate the IDL
-    // let _output = Command::new("pnpm")
-    //     .arg("generate:idls")
-    //     .output()
-    //     .expect("Failed to run shank");
+    let idl_dir = home_dir().unwrap().join("projects/mcpay/idl");
+    let _output = Command::new("shank")
+        .arg("idl")
+        .arg("-o")
+        .arg(idl_dir)
+        .arg("-p")
+        .arg("BtFLxrtCs4BR43jpHvZ9o4t3xk9zkKXx4JTuDhFTeD8W")
+        .output()
+        .expect("Failed to run shank");
 
     // Get the IDL path
-    let idl_path = PathBuf::from("/home/honey/projects/mcpay/idl").join("mcpay_0.json");
-    print!("idl_path {:?}\n", idl_path);
-    
+    let idl_path = home_dir().unwrap().join("projects/mcpay/idl/mcpay_0.json");
+
     // Concat output path of compressed IDL
     let out_dir = env::var("OUT_DIR").unwrap();
     let dest_path = PathBuf::from(out_dir).join("idl.json.zip");
-    print!("dest_path {:?}", dest_path);
     
     compress_idl(&idl_path, &dest_path);
 }
