@@ -1289,6 +1289,7 @@ dependencies = [
  "mpl-bubblegum",
  "shank",
  "solana-program",
+ "solana-security-txt",
  "spl-account-compression",
  "spl-associated-token-account",
  "spl-token",
