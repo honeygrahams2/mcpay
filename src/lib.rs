@@ -19,8 +19,8 @@ security_txt! {
     name: "McPay",
     project_url: "https://mcdegen.xyz/",
     contacts: "email:nathan@airadlabs.com",
-    policy: "https://https://github.com/honeygrahams2/mcpay/blob/master/SECURITY.md",
+    policy: "https://github.com/honeygrahams2/mcpay/blob/master/SECURITY.md",
 
     // Optional Fields
-    source_code: "https://https://github.com/honeygrahams2/mcpay"
+    source_code: "https://github.com/honeygrahams2/mcpay"
 }
