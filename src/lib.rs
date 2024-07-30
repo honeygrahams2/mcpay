@@ -17,7 +17,10 @@ include_idl!();
 security_txt! {
     // Required fields
     name: "McPay",
-    project_url: "https://mcswap.xyz",
+    project_url: "https://mcdegen.xyz/",
     contacts: "email:nathan@airadlabs.com",
-    policy: "https://github.com/McDegens-DAO/McSwap/blob/main/SECURITY.md"
+    policy: "https://https://github.com/honeygrahams2/mcpay/blob/master/SECURITY.md",
+
+    // Optional Fields
+    source_code: "https://https://github.com/honeygrahams2/mcpay"
 }

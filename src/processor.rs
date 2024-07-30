@@ -21,6 +21,7 @@ use solana_program::{
 use spl_associated_token_account::get_associated_token_address;
 use spl_token::state::Account;
 use std::str::FromStr;
+use utils::assert_true;
 
 use crate::{
     error::McPayError, 
@@ -35,15 +36,6 @@ use crate::{
         UpdateStateData,
     }
 };
-
-pub fn assert_true(cond: bool, err: ProgramError, msg: &str) -> ProgramResult {
-    if !cond {
-        msg!(msg);
-        Err(err)
-    } else {
-        Ok(())
-    }
-}
 
 pub struct Processor {}
 impl Processor {
