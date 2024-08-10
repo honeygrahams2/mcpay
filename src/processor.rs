@@ -224,7 +224,7 @@ impl Processor {
         let mut clock_out_utime = utime;        
         let mut chips_due = 0;
         if clock_in_data.level == 1 {
-            clock_out_utime += 300; //86_400;
+            clock_out_utime += 86_400;
             chips_due = program_state_data.level_one_rate;
         } else if clock_in_data.level == 7 {
             clock_out_utime += 86_400 * clock_in_data.level as i64;
