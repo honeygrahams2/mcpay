@@ -588,8 +588,6 @@ impl Processor {
                 program_state.mcdegens_pickle_ata = update_state_data.new_mcdegens_pickle_ata;
             }
             program_state.serialize(&mut &mut program_state_pda.data.borrow_mut()[..])?;
-
-            msg!("Success!");
         } else {
             msg!("CERROR: No updates indicated");
             return Err(McPayError::NoUpdatesIndicated.into());
@@ -633,8 +631,6 @@ impl Processor {
             .ok_or(McPayError::AmountOverflow)?;
         **program_state_pda.try_borrow_mut_lamports()? = 0;
         *program_state_pda.try_borrow_mut_data()? = &mut [];
-
-        msg!("Success!");
         
         Ok(())
     }
@@ -719,8 +715,6 @@ impl Processor {
             ]],
         )?;
 
-        msg!("Success!");
-
         Ok(())
     }
 
@@ -800,8 +794,6 @@ impl Processor {
                 ]
             ],
         )?;
-
-        msg!("Success!");
 
         Ok(())
     }
